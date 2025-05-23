@@ -1,0 +1,4 @@
+# This is a placeholder Gemfile.lock
+# It will be generated automatically when bundle install is run
+# This file is included to ensure Docker build works correctly
+
