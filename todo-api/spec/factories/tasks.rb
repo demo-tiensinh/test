@@ -3,27 +3,18 @@ FactoryBot.define do
     title { Faker::Lorem.sentence(word_count: 3) }
     description { Faker::Lorem.paragraph }
     due_date { Faker::Time.forward(days: 7) }
-    priority { [1, 2, 3].sample }
-    status { ['incomplete', 'complete'].sample }
+    status { ['to_do', 'in_progress', 'done'].sample }
 
-    trait :high_priority do
-      priority { 1 }
+    trait :to_do do
+      status { 'to_do' }
     end
 
-    trait :medium_priority do
-      priority { 2 }
+    trait :in_progress do
+      status { 'in_progress' }
     end
 
-    trait :low_priority do
-      priority { 3 }
-    end
-
-    trait :incomplete do
-      status { 'incomplete' }
-    end
-
-    trait :complete do
-      status { 'complete' }
+    trait :done do
+      status { 'done' }
     end
 
     trait :due_soon do
@@ -35,4 +26,3 @@ FactoryBot.define do
     end
   end
 end
-

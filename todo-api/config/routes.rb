@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tasks, only: [:index, :show, :create, :update, :destroy]
+      
+      # Authentication routes
+      namespace :auth do
+        post 'login', to: 'auth#login'
+      end
     end
   end
 
@@ -16,4 +21,3 @@ Rails.application.routes.draw do
   # Root path
   root to: redirect('/api-docs')
 end
-

@@ -1,6 +1,7 @@
 module Api
   module V1
     class TasksController < ApplicationController
+      before_action :authenticate_request, only: [:create, :update, :destroy]
       before_action :set_task, only: [:show, :update, :destroy]
 
       # GET /api/v1/tasks
@@ -10,13 +11,8 @@ module Api
         # Filter by status if provided
         @tasks = @tasks.by_status(params[:status]) if params[:status].present?
 
-        # Sort by field and direction if provided
-        if params[:sortBy].present? && params[:order].present?
-          @tasks = @tasks.sort_by_field(params[:sortBy], params[:order])
-        end
-
-        # Paginate results
-        @tasks = @tasks.page(params[:page] || 1).per(params[:per_page] || 10)
+        # Sort by field if provided
+        @tasks = @tasks.sort_by_field(params[:sort]) if params[:sort].present?
 
         render json: @tasks
       end
@@ -61,9 +57,8 @@ module Api
       end
 
       def task_params
-        params.require(:task).permit(:title, :description, :due_date, :priority, :status)
+        params.require(:task).permit(:title, :description, :due_date, :status)
       end
     end
   end
 end
-
