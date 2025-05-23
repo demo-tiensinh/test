@@ -1,0 +1,45 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Complete project documentation",
+      "description": "Write comprehensive documentation for the TODO application",
+      "dueDate": "2023-12-31T23:59:59Z",
+      "priority": 1,
+      "status": "incomplete"
+    },
+    {
+      "id": "2",
+      "title": "Fix UI bugs",
+      "description": "Address reported UI issues in the task list view",
+      "dueDate": "2023-12-15T18:00:00Z",
+      "priority": 2,
+      "status": "incomplete"
+    },
+    {
+      "id": "3",
+      "title": "Implement user authentication",
+      "description": "Add login and registration functionality",
+      "dueDate": "2024-01-15T12:00:00Z",
+      "priority": 1,
+      "status": "incomplete"
+    },
+    {
+      "id": "4",
+      "title": "Update dependencies",
+      "description": "Update all npm packages to their latest versions",
+      "dueDate": "2023-12-10T09:00:00Z",
+      "priority": 3,
+      "status": "complete"
+    },
+    {
+      "id": "5",
+      "title": "Create user guide",
+      "description": "Write a comprehensive user guide for the application",
+      "dueDate": "2024-01-05T17:00:00Z",
+      "priority": 2,
+      "status": "incomplete"
+    }
+  ]
+}
+

@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  nuxt-todo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nuxt-todo-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - API_BASE_URL=http://localhost:3000
+    restart: unless-stopped
+    networks:
+      - todo-app-network
+
+  # Mock API service (for development purposes)
+  # In a real environment, you would replace this with your actual backend service
+  mock-api:
+    image: node:18-alpine
+    container_name: mock-api
+    working_dir: /app
+    volumes:
+      - ./mock-api:/app
+    command: >
+      sh -c "npm install -g json-server && 
+             json-server --watch db.json --port 3000 --host 0.0.0.0"
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    networks:
+      - todo-app-network
+
+networks:
+  todo-app-network:
+    driver: bridge
+
